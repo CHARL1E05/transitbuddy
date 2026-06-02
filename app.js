@@ -4,6 +4,7 @@ const o405nh = document.getElementById("O405nh");
 var map = L.map('map').setView([-33.817, 151.005], 11);
 const checkboxes = document.getElementsByTagName('input');
 const result = await fetch("https://p2htubbx6rthsfndbkxzckunb40lkuti.lambda-url.ap-southeast-2.on.aws/");
+const data = await result.json();
 
 for (const checkbox of checkboxes) {
   checkbox.addEventListener('click', async () => {
@@ -30,7 +31,6 @@ async function fetchBuses() {
     
   }
 
-  const data = await result.json();
   for (const bus of data) {
     if (bus.type === "Mercedes-Benz O405" && o405.checked === false) {
         continue;
