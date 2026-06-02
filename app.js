@@ -30,7 +30,9 @@ async function fetchBuses() {
   for (const bus of data) {
     if (bus.type === "Mercedes-Benz O405" && !document.getElementById("O405-toggle").checked) {
         continue;
-    } else if (bus.type === "Mercedes-Benz O405NH" && !document.getElementById("O405nh-toggle").checked)
+    } else if (bus.type === "Mercedes-Benz O405NH" && !document.getElementById("O405nh-toggle").checked) {
+        continue;
+    }
     markers[bus.rego] = L.marker([bus.latitude, bus.longitude]).addTo(map);
     markers[bus.rego].on('click', async () => {
       markers[bus.rego].bindPopup(`Route ${bus.route}<br>${bus.rego}<br>${bus.type}`);
