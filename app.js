@@ -28,9 +28,9 @@ async function fetchBuses() {
   const result = await fetch("https://p2htubbx6rthsfndbkxzckunb40lkuti.lambda-url.ap-southeast-2.on.aws/");
   const data = await result.json();
   for (const bus of data) {
-    if (bus.type === "Mercedes-Benz O405" && !document.getElementById("O405-toggle").checked) {
+    if (bus.type === "Mercedes-Benz O405" && !document.getElementById("O405").checked) {
         continue;
-    } else if (bus.type === "Mercedes-Benz O405NH" && !document.getElementById("O405nh-toggle").checked) {
+    } else if (bus.type === "Mercedes-Benz O405NH" && !document.getElementById("O405nh").checked) {
         continue;
     }
     markers[bus.rego] = L.marker([bus.latitude, bus.longitude]).addTo(map);
