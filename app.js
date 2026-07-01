@@ -34,6 +34,7 @@ async function fetchBuses() {
 
   for (const bus of data) {
     console.log(bus.routeService);
+    console.log("A");
     if (bus.routeService && route.checked === true) {
         continue;
     }
