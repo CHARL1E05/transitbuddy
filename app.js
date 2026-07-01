@@ -33,7 +33,8 @@ async function fetchBuses() {
   }
 
   for (const bus of data) {
-    if (!bus.routeService && route.checked === true) {
+    console.log(bus.routeService);
+    if (bus.routeService && route.checked === true) {
         continue;
     }
     if (bus.type === "Mercedes-Benz O405" && o405.checked === false) {
