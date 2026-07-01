@@ -1,5 +1,6 @@
 const o405 = document.getElementById("O405");
 const o405nh = document.getElementById("O405nh");
+const route = document.getElementById("route");
 
 var map = L.map('map').setView([-33.817, 151.005], 11);
 const checkboxes = document.getElementsByTagName('input');
@@ -32,6 +33,9 @@ async function fetchBuses() {
   }
 
   for (const bus of data) {
+    if (!bus.routeService && route.checked === true) {
+        continue;
+    }
     if (bus.type === "Mercedes-Benz O405" && o405.checked === false) {
         continue;
     } else if (bus.type === "Mercedes-Benz O405NH" && o405nh.checked === false) {
