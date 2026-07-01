@@ -34,6 +34,7 @@ async function fetchBuses() {
 
   for (const bus of data) {
     // If not a route service but route services only is checked, skip
+    console.log(bus.routeService, bus.routeService === true, bus.routeService === 'true');
     if (bus.routeService !== true && route.checked === true) {
         continue;
     }
