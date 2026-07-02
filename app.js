@@ -45,15 +45,16 @@ async function fetchBuses() {
     markers[bus.rego] = L.marker([bus.latitude, bus.longitude]).addTo(map);
     markers[bus.rego].on('click', async () => {
       markers[bus.rego].bindPopup(`Route ${bus.route}<br>${bus.rego}<br>${bus.type}`);
-      // Bring up route map using route from bus[2]
-      /* Removing this code until I've made it more efficient with SQL
-      const currShape = await fetch(`${SERVER_URL}/api/gtfs/${bus[5]}`);
+      // Bring up route map using trip. Get trip using tripId
+      const currTrip = await fetch(`https://kemuwizpmfj3hx343nidqz2avy0pepjd.lambda-url.ap-southeast-2.on.aws/?trip_id=${bus.entity.vehicle.trip.tripId}`);
+      const currShape = await fetch(`https://jjtlog4mys45w2m6m7i6fo5fdu0arlrh.lambda-url.ap-southeast-2.on.aws/?shape_id=${currTrip.shape_id}`);
       // Plot the array, where each entry looks like [lat, long]
-      const line = await currShape.json();
-      var currLine = L.polyline(line, {color: 'blue'}).addTo(map);
+      const lineJson = await currShape.json();
+      const line = lineJson.points;
+      var currLine = L.polyline(lineJson, {color: 'blue'}).addTo(map);
       map.on('click', () => {
         map.removeLayer(currLine);
-      })*/
+      })
     })
   }
 }
