@@ -51,7 +51,7 @@ async function fetchBuses() {
       const currShape = await fetch(`https://jjtlog4mys45w2m6m7i6fo5fdu0arlrh.lambda-url.ap-southeast-2.on.aws/?shape_id=${currTrip.shape_id}`);
       // Plot the array, where each entry looks like [lat, long]
       const lineJson = await currShape.json();
-      const line = lineJson.item.points;
+      const line = lineJson.Item.points;
       console.log(currTrip, lineJson, line);
       var currLine = L.polyline(line, {color: 'blue'}).addTo(map);
       map.on('click', () => {
