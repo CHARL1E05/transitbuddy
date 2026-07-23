@@ -10,6 +10,7 @@ const b7rlecb60 = document.getElementById("b7rlecb60");
 const route = document.getElementById("route");
 const panel = document.getElementById("panel");
 const btn = document.getElementById("side-panel-toggle");
+const contract = document.getElementById("contracts");
 
 btn.addEventListener("click", () => {
   panel.classList.toggle("open");
@@ -21,9 +22,15 @@ const result = await fetch("https://p2htubbx6rthsfndbkxzckunb40lkuti.lambda-url.
 const data = await result.json();
 
 for (const checkbox of checkboxes) {
-  checkbox.addEventListener('click', async () => {
-    await fetchBuses();
-  })
+  if (checkbox.id != "contracts") {
+    checkbox.addEventListener('click', async () => {
+      await fetchBuses();
+    })
+  } else {
+    checkbox.addEventListener('click', async () => {
+      await drawRegions(checkbox.checked);
+    })
+  }
 }
 
 // We have to set up the tiles for the map afterwards
@@ -91,5 +98,16 @@ async function fetchBuses() {
     markers[bus.rego].on('mouseout', async () => {
       markers[bus.rego].closePopup();
     })
+  }
+}
+
+async function drawRegions(checked) {
+  if (!checked) {
+    // remove map
+  } else {
+    // fetch contract map
+    const regionData = await fetch('https://yjsubxjb27mbwkcp6prae5ogdq0nyuna.lambda-url.ap-southeast-2.on.aws/');
+    const regions = await regionData.json();
+    const regionMap = L.geoJSON(regions).addTo(map);
   }
 }
