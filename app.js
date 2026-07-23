@@ -1,6 +1,19 @@
-const o405 = document.getElementById("O405");
-const o405nh = document.getElementById("O405nh");
+const o405510 = document.getElementById("O405510");
+const o405228 = document.getElementById("O405228");
+const o405nh550 = document.getElementById("O405nh");
+const o405nhcb60 = document.getElementById("O405nh");
+const o405nhbustech = document.getElementById("O405nh");
+const b10m510 = document.getElementById("b10m510");
+const b10m516 = document.getElementById("b10m516");
+const b10blecb60 = document.getElementById("b10blecb60");
+const b7rlecb60 = document.getElementById("b7rlecb60");
 const route = document.getElementById("route");
+const panel = document.getElementById("panel");
+const btn = document.getElementById("side-panel-toggle");
+
+btn.addEventListener("click", () => {
+  panel.classList.toggle("open");
+});
 
 var map = L.map('map').setView([-33.817, 151.005], 11);
 const checkboxes = document.getElementsByTagName('input');
@@ -37,10 +50,24 @@ async function fetchBuses() {
     if (bus.routeService === false && route.checked === true) {
         continue;
     }
-    if (bus.type === "Mercedes-Benz O405" && o405.checked === false) {
+    if (bus.type === "Mercedes-Benz O405 Custom Coaches 510" && o405510.checked === false) {
         continue;
-    } else if (bus.type === "Mercedes-Benz O405NH" && o405nh.checked === false) {
+    } else if (bus.type === "Mercedes-Benz O405 Custom Coaches 228" && o405228.checked === false) {
         continue;
+    } else if (bus.type === "Mercedes-Benz O405NH Custom Coaches 550" && o405nh550.checked === false) {
+        continue;
+    } else if (bus.type === "Mercedes-Benz O405NH Custom Coaches CB60" && o405nhcb60.checked === false) {
+        continue;
+    } else if (bus.type === "Mercedes-Benz O405NH Bustech" && o405nhbustech.checked === false) {
+        continue;
+    } else if (bus.type === "Volvo B10M Custom Coaches 516" && b10m516.checked === false) {
+        continue;
+    } else if (bus.type === "Volvo B10M Custom Coaches 510" && b10m510.checked === false) {
+        continue;
+    } else if (bus.type === "Volvo B10BLE Custom Coaches CB60" && b10blecb60.checked === false) {
+      continue;
+    } else if (bus.type === "Volvo B7RLE Custom Coaches CB60" && b7rlecb60.checked === false) {
+      continue;
     }
     markers[bus.rego] = L.marker([bus.latitude, bus.longitude]).addTo(map);
     markers[bus.rego].on('click', async () => {

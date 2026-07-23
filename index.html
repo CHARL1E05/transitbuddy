@@ -6,32 +6,105 @@
         <style>
             #map {
                 width: 100vw;
-                height: 90vh;
+                height: 100vh;
             }
             body {
                 margin: 0px;
+                overflow: hidden;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            .wrapper {
+                display: flex;
+                flex-direction: row;
+            }
+            #panel {
+                display: block;
+                position: absolute;
+                top: 0px;
+                right: -510px;
+                z-index: 1000;
+            }
+            #side-panel-toggle {
+                width: 100px;
+                height: 50px;
+                top: 20px;
+                left: -100px;
+                flex-shrink: 0;
+                border-radius: 5px 0 0 5px; 
+                border-width: 1px 0px 1px 1px; 
+                position: absolute;
+                z-index: 1000;
+            }
+            #panel.open {
+                top: 0px;
+                right: 0px;
+            }
+            .bus-toggle p {
+                margin: 2px;
             }
         </style>
     </head>
     <body>
-        <div id="map"></div>
-        <script type="module" src="app.js"></script>
-        <div id="bar-bottom" style="display: flex; flex-direction: row; justify-content: space-between; width: 100vw; height: 10vh;">
-            <div id="bar-bottom-left" style="display: flex; flex-direction: row; justify-content: flex-start;">
-                <h1 style="font-family: Arial, Helvetica, sans-serif;">Bus Buddy</h1>
-                <div id="O405-toggle" style="display: flex; align-items: center;">
-                    <input id="O405" type="checkbox" checked="true">
-                    <p style="font-family: Arial, Helvetica, sans-serif;">Mercedes-Benz O405</p>
-                </div>
-                <div id="O405nh-toggle" style="display: flex; align-items: center;">
-                    <input id="O405nh" type="checkbox" checked="true">
-                    <p style="font-family: Arial, Helvetica, sans-serif;">Mercedes-Benz O405NH</p>
-                </div>
+        <div class="wrapper">
+            <div class="main">
+                <div id="map"></div>
+                <script type="module" src="app.js"></script>
             </div>
-            <div id="bar-bottom-right" style="display: flex; flex-direction: row; justify-content: flex-end;">
-                <div id="route-toggle" style="display: flex; align-items: center;">
-                    <input id="route" type="checkbox">
-                    <p style="font-family: Arial, Helvetica, sans-serif;">Route Services Only</p>
+            <div id="panel">
+                <button id="side-panel-toggle" type="button">
+                    Filters
+                </button>
+                <div id="toggle" style="display: flex; flex-direction: row; justify-content: space-between; height: 100vh; width: 500px; background-color: whitesmoke; border-left: 1px solid black; border-radius: 5px; overflow-x: auto; padding-left: 10px;">
+                    <div id="toggle-top" style="display: flex; flex-direction: column; justify-content: flex-start;">
+                        <h1 style="font-family: Arial, Helvetica, sans-serif;">Bus Buddy</h1>
+                        <b>Mercedes-Benz O405</b>
+                        <div class="bus-toggle" id="O405510-toggle" style="display: flex; align-items: center;">
+                            <input id="O405510" type="checkbox" checked="true">
+                            <p style="font-family: Arial, Helvetica, sans-serif;">Custom Coaches 510</p>
+                        </div>
+                        <div class="bus-toggle" id="O405228-toggle" style="display: flex; align-items: center;">
+                            <input id="O405228" type="checkbox" checked="true">
+                            <p style="font-family: Arial, Helvetica, sans-serif;">Custom Coaches 228</p>
+                        </div>
+                        <b>Mercedes-Benz O405NH</b>
+                        <div class="bus-toggle" id="O405nh550-toggle" style="display: flex; align-items: center;">
+                            <input id="O405nh550" type="checkbox" checked="true">
+                            <p style="font-family: Arial, Helvetica, sans-serif;">Custom Coaches 550</p>
+                        </div>
+                        <div class="bus-toggle" id="O405nhcb60-toggle" style="display: flex; align-items: center;">
+                            <input id="O405nhcb60" type="checkbox" checked="true">
+                            <p style="font-family: Arial, Helvetica, sans-serif;">Custom Coaches CB60</p>
+                        </div>
+                        <div class="bus-toggle" id="O405nhbustech-toggle" style="display: flex; align-items: center;">
+                            <input id="O405nhbustech" type="checkbox" checked="true">
+                            <p style="font-family: Arial, Helvetica, sans-serif;">Bustech</p>
+                        </div>
+                        <b>Volvo B10M</b>
+                        <div class="bus-toggle" id="b10m510-toggle" style="display: flex; align-items: center;">
+                            <input id="b10m510" type="checkbox" checked="true">
+                            <p style="font-family: Arial, Helvetica, sans-serif;">Custom Coaches 510</p>
+                        </div>
+                        <div class="bus-toggle" id="b10m516-toggle" style="display: flex; align-items: center;">
+                            <input id="b10m516" type="checkbox" checked="true">
+                            <p style="font-family: Arial, Helvetica, sans-serif;">Custom Coaches 516</p>
+                        </div>
+                        <b>Volvo B7RLE</b>
+                        <div class="bus-toggle" id="b7rlecb60-toggle" style="display: flex; align-items: center;">
+                            <input id="b7rlecb60" type="checkbox" checked="true">
+                            <p style="font-family: Arial, Helvetica, sans-serif;">Custom Coaches CB60</p>
+                        </div>
+                        <b>Volvo B10BLE</b>
+                        <div class="bus-toggle" id="b10blecb60-toggle" style="display: flex; align-items: center;">
+                            <input id="b10blecb60" type="checkbox" checked="true">
+                            <p style="font-family: Arial, Helvetica, sans-serif;">Custom Coaches CB60</p>
+                        </div>
+                    </div>
+                    <div id="toggle-right" style="display: flex; flex-direction: column; justify-content: flex-start;">
+                        <div id="route-toggle" style="display: flex; align-items: center;">
+                            <input id="route" type="checkbox">
+                            <p style="font-family: Arial, Helvetica, sans-serif;">Route Services Only</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
