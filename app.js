@@ -12,7 +12,6 @@ const panel = document.getElementById("panel");
 const btn = document.getElementById("side-panel-toggle");
 
 btn.addEventListener("click", () => {
-  console.log("Clicked");
   panel.classList.toggle("open");
 });
 
