@@ -25,6 +25,11 @@
                 transform: translateX(100%);
                 z-index: 1000;
                 box-sizing: border-box;
+                font-size: 3vh;
+            }
+            #panel input {
+                width: 3vh;
+                height: 3vh;
             }
             #side-panel-toggle {
                 width: 100px;
@@ -55,9 +60,13 @@
                 <button id="side-panel-toggle" type="button">
                     Filters
                 </button>
-                <div id="toggle" style="display: flex; flex-direction: row; justify-content: space-between; height: 100vh; width: 500px; background-color: whitesmoke; border-left: 1px solid black; border-radius: 5px; overflow-x: auto; padding-left: 10px;">
+                <div id="toggle" style="display: flex; flex-direction: row; justify-content: space-between; height: 100vh; width: 50vw; background-color: whitesmoke; border-left: 1px solid black; border-radius: 5px; overflow-x: auto; padding-left: 10px;">
                     <div id="toggle-top" style="display: flex; flex-direction: column; justify-content: flex-start;">
                         <h1 style="font-family: Arial, Helvetica, sans-serif;">Bus Buddy</h1>
+                        <div id="route-toggle" style="display: flex; align-items: center;">
+                            <input id="route" type="checkbox">
+                            <p style="font-family: Arial, Helvetica, sans-serif;">Route Services Only</p>
+                        </div>
                         <b>Mercedes-Benz O405</b>
                         <div class="bus-toggle" id="O405510-toggle" style="display: flex; align-items: center;">
                             <input id="O405510" type="checkbox" checked="true">
@@ -98,12 +107,6 @@
                         <div class="bus-toggle" id="b10blecb60-toggle" style="display: flex; align-items: center;">
                             <input id="b10blecb60" type="checkbox">
                             <p style="font-family: Arial, Helvetica, sans-serif;">Custom Coaches CB60</p>
-                        </div>
-                    </div>
-                    <div id="toggle-right" style="display: flex; flex-direction: column; justify-content: flex-start;">
-                        <div id="route-toggle" style="display: flex; align-items: center;">
-                            <input id="route" type="checkbox">
-                            <p style="font-family: Arial, Helvetica, sans-serif;">Route Services Only</p>
                         </div>
                     </div>
                 </div>
