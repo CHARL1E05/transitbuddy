@@ -21,7 +21,8 @@
                 display: block;
                 position: absolute;
                 top: 0px;
-                right: -510px;
+                right: 0px;
+                transform: translateX(100%);
                 z-index: 1000;
                 box-sizing: border-box;
             }
@@ -37,8 +38,7 @@
                 z-index: 1000;
             }
             #panel.open {
-                top: 0px;
-                right: 0px;
+                transform: translateX(0);
             }
             .bus-toggle p {
                 margin: 2px;
