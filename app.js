@@ -70,7 +70,7 @@ async function fetchBuses() {
       continue;
     }
     markers[bus.rego] = L.marker([bus.latitude, bus.longitude]).addTo(map);
-    markers[bus.rego].bindPopup(`Route ${bus.route}<br>${bus.rego}<br>${bus.type}`);
+    markers[bus.rego].bindPopup(`Route ${bus.route}<br>${bus.routeName}<br>${bus.rego}<br>${bus.type}`);
     markers[bus.rego].on('click', async () => {
       // Bring up route map using trip. Get trip using tripId
       const tripRes = await fetch(`https://kemuwizpmfj3hx343nidqz2avy0pepjd.lambda-url.ap-southeast-2.on.aws/?trip_id=${bus.tripId}`);
