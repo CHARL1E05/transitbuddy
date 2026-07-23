@@ -1,8 +1,8 @@
 const o405510 = document.getElementById("O405510");
 const o405228 = document.getElementById("O405228");
-const o405nh550 = document.getElementById("O405nh");
-const o405nhcb60 = document.getElementById("O405nh");
-const o405nhbustech = document.getElementById("O405nh");
+const o405nh550 = document.getElementById("O405nh550");
+const o405nhcb60 = document.getElementById("O405nhcb60");
+const o405nhbustech = document.getElementById("O405nhbustech");
 const b10m510 = document.getElementById("b10m510");
 const b10m516 = document.getElementById("b10m516");
 const b10blecb60 = document.getElementById("b10blecb60");
@@ -12,6 +12,7 @@ const panel = document.getElementById("panel");
 const btn = document.getElementById("side-panel-toggle");
 
 btn.addEventListener("click", () => {
+  console.log("Clicked");
   panel.classList.toggle("open");
 });
 
