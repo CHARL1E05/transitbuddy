@@ -1,0 +1,70 @@
+#map {
+    width: 100vw;
+    height: 100vh;
+}
+body {
+    margin: 0px;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: row;
+}
+#panel {
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    transform: translateX(100%);
+    z-index: 1000;
+    box-sizing: border-box;
+    font-size: 2vh;
+    max-width: 500px;
+    border-radius: 5px; 
+}
+#panel input {
+    width: 3vh;
+    height: 3vh;
+}
+#side-panel-toggle {
+    width: 100px;
+    height: 50px;
+    top: 20px;
+    left: -100px;
+    flex-shrink: 0;
+    border-radius: 5px 0 0 5px; 
+    border-width: 1px 0px 1px 1px; 
+    position: absolute;
+    z-index: 1000;
+}
+#panel.open {
+    transform: translateX(0);
+    box-shadow: 0px 0px 5px black;
+}
+.bus-toggle {
+    display: flex; 
+    align-items: center;
+}
+.bus-toggle p {
+    margin: 2px;
+}
+#toggle {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between; 
+    height: 100vh; 
+    width: 50vw; 
+    background-color: whitesmoke; 
+    border-left: 1px solid black; 
+    overflow-x: auto; 
+    padding-left: 10px;
+    border-radius: 5px; 
+    box-shadow: none;
+}
+.toggle-top {
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-start;
+}
+button {
+    font-size: 2vh;
+}
