@@ -100,14 +100,25 @@ async function fetchBuses() {
     })
   }
 }
-
+let regionMap;
+let regionLayer = new L.LayerGroup();
+regionLayer.addTo(map);
 async function drawRegions(checked) {
   if (!checked) {
-    // remove map
+    // remove layer from map, if region map layer exists yet
+    if (regionMap) {
+      regionLayer.removeLayer(regionMap);
+    }
   } else {
-    // fetch contract map
-    const regionData = await fetch('https://yjsubxjb27mbwkcp6prae5ogdq0nyuna.lambda-url.ap-southeast-2.on.aws/');
-    const regions = await regionData.json();
-    const regionMap = L.geoJSON(regions).addTo(map);
+    // If region map layer doesn't exist, fetch region map and make the layer
+    if (!regionMap) {
+      const regionData = await fetch('https://yjsubxjb27mbwkcp6prae5ogdq0nyuna.lambda-url.ap-southeast-2.on.aws/');
+      const regions = await regionData.json();
+      regionMap = L.geoJSON(regions);
+      regionLayer.addLayer(regionMap);
+    } else {
+      // Layer was already fetched, so re-add without extra API call
+      regionLayer.addLayer(regionMap);
+    }
   }
 }
